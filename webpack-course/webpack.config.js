@@ -5,7 +5,21 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     devServer: {
-        static: "./dist",
+        static: "./dist",   //contentBase doesnt work anymore
+    },
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
