@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {
     mode: 'development',
@@ -22,12 +24,13 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
+                    {
+                      loader: MiniCssExtractPlugin.loader,
+                      options: {} // HMR is automatically supported in webpack 5. No need to configure it.
+                    },
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
                 ],
             },
         ]
@@ -35,6 +38,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Development',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
         }),
     ],
     output: {

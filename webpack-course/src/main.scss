@@ -1,5 +1,8 @@
-$body-color:red;
-
 body{
-  background: $body-color;
+  display: grid;
+  transition: all .5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, red);
+  font-size: responsive;
 }
+

@@ -1,7 +1,7 @@
 {
   "name": "webpack-course",
   "version": "1.0.0",
-  "description": "",
+  "description": "webpack lessons",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -15,9 +15,15 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
+    "autoprefixer": "^10.3.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "cssnano": "^5.0.8",
     "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.0",
+    "postcss": "^8.3.6",
+    "postcss-loader": "^6.1.1",
+    "rucksack-css": "^1.0.2",
     "sass": "^1.38.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
