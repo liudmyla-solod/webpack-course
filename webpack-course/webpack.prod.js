@@ -1,12 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
-module.exports = {
+module.exports = merge(common, {
     mode: 'production',
     devtool: 'inline-source-map',
-    entry: './src/index.js',
     devServer: {
         static: "./dist",   //contentBase doesnt work anymore
     },
@@ -37,15 +35,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Development',
-        }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
     ],
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
-    },
-};
+});
