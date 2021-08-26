@@ -4,8 +4,8 @@
   "description": "webpack lessons",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --open",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devtool": "false",
@@ -16,6 +16,7 @@
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "autoprefixer": "^10.3.2",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "cssnano": "^5.0.8",

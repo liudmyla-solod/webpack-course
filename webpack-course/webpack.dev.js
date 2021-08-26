@@ -1,11 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
+    devtool: 'inline-source-map',
     devServer: {
         static: "./dist",   //contentBase doesnt work anymore
     },
@@ -24,13 +24,9 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: [
-                    {
-                      loader: MiniCssExtractPlugin.loader,
-                      options: {} // HMR is automatically supported in webpack 5. No need to configure it.
-                    },
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader',
+                    { loader: 'css-loader', options: { sourceMap: true } },
+                    { loader: 'postcss-loader', options: { sourceMap: true } },
+                    { loader: 'sass-loader', options: { sourceMap: true } },
                 ],
             },
         ]
@@ -38,9 +34,6 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Development',
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
         }),
     ],
     output: {
